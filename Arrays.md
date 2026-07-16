@@ -172,3 +172,67 @@ class Solution {
 
 ### ⚠️ Mistake
 > Forgetting that digit count can also be found mathematically (`/10`) instead of converting to a string.
+
+---
+
+## 🟢 LC 26 - Remove Duplicates from Sorted Array
+
+> **Pattern:** Slow & Fast Pointer (In-place Array Compression)
+
+---
+
+### 🎯 Trigger / Recognition
+
+- Array is **sorted**
+- Need to **remove duplicates in-place**
+- Return the **number of unique elements**
+- Extra space is **not allowed**
+
+---
+
+### 💡 Idea
+
+- Use two pointers:
+  - `i` → Fast pointer (scans every element)
+  - `j` → Slow pointer (last unique element)
+- If `nums[i] != nums[j]`:
+  - Move `j` forward
+  - Copy `nums[i]` to `nums[j]`
+- Return `j + 1` (count of unique elements)
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int n = nums.length;
+        int j = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (nums[i] != nums[j]) {
+                j++;
+                nums[j] = nums[i];
+            }
+        }
+
+        return j + 1;
+    }
+}
+```
+
+---
+
+### ⚡ Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Time | **O(n)** |
+| Space | **O(1)** |
+
+---
+
+### ⚠️ Mistake
+
+> `j` is the **index of the last unique element**, **not the count**.  
+> Therefore, return **`j + 1`**, not `j`.
+
+---
+
