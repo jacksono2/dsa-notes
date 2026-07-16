@@ -77,3 +77,82 @@ class Solution {
 **Complexity**
 - Time: `O(m × n)`
 - Space: `O(1)`
+
+## 🟢 LC 485 - Max Consecutive Ones
+
+**Pattern:** Array Traversal
+
+**Trigger**
+- Count consecutive elements
+- Reset count when condition breaks
+
+**Idea**
+- Traverse the array
+- Increment count for every `1`
+- Reset count when `0` is encountered
+- Track the maximum count
+
+```java
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0;
+        int maxCount = 0;
+
+        for (int num : nums) {
+            if (num == 1) {
+                count++;
+                maxCount = Math.max(maxCount, count);
+            } else {
+                count = 0;
+            }
+        }
+
+        return maxCount;
+    }
+}
+```
+
+**Complexity**
+- Time: `O(n)`
+- Space: `O(1)`
+
+**Mistake**
+- Forgetting to reset the count when `0` is encountered.
+
+## 🟢 LC 1295 - Find Numbers with Even Number of Digits
+
+**Pattern:** Array Traversal
+
+**Trigger**
+- Process every element independently
+- Count digits of a number
+
+**Idea**
+- Traverse the array
+- Count the number of digits in each number
+- Increment answer if the digit count is even
+
+```java
+class Solution {
+    public int findNumbers(int[] nums) {
+        int count = 0;
+
+        for (int num : nums) {
+            int digits = String.valueOf(num).length();
+
+            if (digits % 2 == 0) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}
+```
+
+**Complexity**
+- Time: `O(n)`
+- Space: `O(1)`
+
+**Mistake**
+- Forgetting that digit count can also be found mathematically (`/10`) instead of converting to a string.
