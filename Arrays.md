@@ -147,17 +147,19 @@ class Solution {
 ```java
 class Solution {
     public int findNumbers(int[] nums) {
-        int count = 0;
-
-        for (int num : nums) {
-            int digits = String.valueOf(num).length();
-
-            if (digits % 2 == 0) {
-                count++;
+        int evencount=0;
+        int digit=0;
+        for(int i=0;i<nums.length;i++){
+            while(nums[i]!=0){
+                digit++;
+                nums[i]/=10;
             }
+            if(digit%2==0){
+                evencount++;
+            }
+            digit=0;
         }
-
-        return count;
+        return evencount;
     }
 }
 ```
