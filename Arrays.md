@@ -41,7 +41,39 @@ class Solution {
 **Mistake**
 - `return k` → returns the new valid length, **not** the array.
 
-**Related**
-- LC 26
-- LC 283
-- LC 977
+## 🟢 LC 1672 - Richest Customer Wealth
+
+**Pattern:** Array Traversal
+
+**Trigger**
+- 2D array
+- Find maximum row sum
+
+**Idea**
+- Traverse each row
+- Calculate the sum of each customer's wealth
+- Track the maximum sum
+
+```java
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int maxWealth = 0;
+
+        for (int i = 0; i < accounts.length; i++) {
+            int wealth = 0;
+
+            for (int j = 0; j < accounts[i].length; j++) {
+                wealth += accounts[i][j];
+            }
+
+            maxWealth = Math.max(maxWealth, wealth);
+        }
+
+        return maxWealth;
+    }
+}
+```
+
+**Complexity**
+- Time: `O(m × n)`
+- Space: `O(1)`
