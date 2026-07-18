@@ -236,7 +236,7 @@ class Solution {
 
 ---
 
-# 📘 LC 189 - Rotate Array
+## 🟢 LC 189 - Rotate Array
 
 ---
 
@@ -244,7 +244,7 @@ class Solution {
 
 ---
 
-## 🟢 Recognition
+### 🟢 Recognition
 
 - Rotate an array to the **right by `k` steps**.
 - `k` may be **greater than the array length**.
@@ -252,7 +252,7 @@ class Solution {
 
 ---
 
-## 💡 Idea
+### 💡 Idea
 
 1. Reduce unnecessary rotations.
    ```java
@@ -264,7 +264,7 @@ class Solution {
 
 ---
 
-## 💻 Code
+### 💻 Code
 
 ```java
 class Solution {
@@ -291,7 +291,7 @@ class Solution {
 
 ---
 
-## 📊 Complexity
+### 📊 Complexity
 
 | Operation | Complexity |
 |-----------|-----------:|
@@ -300,7 +300,7 @@ class Solution {
 
 ---
 
-## ⚠️ Mistake
+### ⚠️ Mistake
 
 > - Forgetting `k = k % n`.
 > - Reversing `0` to `n-k` instead of `0` to `k-1`.
