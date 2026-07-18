@@ -236,3 +236,76 @@ class Solution {
 
 ---
 
+# 📘 LC 189 - Rotate Array
+
+---
+
+> **Pattern:** Array Reversal / In-place Rotation
+
+---
+
+## 🟢 Recognition
+
+- Rotate an array to the **right by `k` steps**.
+- `k` may be **greater than the array length**.
+- Follow-up asks for an **O(1) space** solution.
+
+---
+
+## 💡 Idea
+
+1. Reduce unnecessary rotations.
+   ```java
+   k = k % n;
+   ```
+2. Reverse the entire array.
+3. Reverse the first `k` elements.
+4. Reverse the remaining `n - k` elements.
+
+---
+
+## 💻 Code
+
+```java
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+    }
+
+    private void reverse(int[] nums, int left, int right) {
+        while (left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+    }
+}
+```
+
+---
+
+## 📊 Complexity
+
+| Operation | Complexity |
+|-----------|-----------:|
+| ⏱️ Time | **O(n)** |
+| 💾 Space | **O(1)** |
+
+---
+
+## ⚠️ Mistake
+
+> - Forgetting `k = k % n`.
+> - Reversing `0` to `n-k` instead of `0` to `k-1`.
+> - Incorrect swap logic while reversing.
+> - Defining `reverse()` inside `rotate()` (invalid in Java).
+
+---
+
