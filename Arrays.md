@@ -309,3 +309,64 @@ class Solution {
 
 ---
 
+## 🟢 LC 88 • Merge Sorted Array
+
+> **Pattern:** Two Pointers (Merge from End)
+
+### 🎯 Trigger
+- Two sorted arrays
+- Merge **in-place**
+- `nums1` has extra space at the end
+- O(1) extra space required
+
+### 💡 Idea
+- Start from the **end** of both arrays.
+- `i` → Last valid element in `nums1`
+- `j` → Last element in `nums2`
+- `k` → Last index of `nums1`
+- Place the **larger element** at `nums1[k]`.
+- Continue until all elements of `nums2` are merged.
+
+```java
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+
+        while (j >= 0) {
+            if (i < 0) {
+                nums1[k] = nums2[j];
+                j--;
+                k--;
+                continue;
+            }
+
+            if (nums1[i] < nums2[j]) {
+                nums1[k] = nums2[j];
+                j--;
+            } else {
+                nums1[k] = nums1[i];
+                i--;
+            }
+
+            k--;
+        }
+    }
+}
+```
+
+### 📊 Complexity
+
+| Time | Space |
+|------|-------|
+| `O(m + n)` | `O(1)` |
+
+### ⚠️ Mistake
+> - Merging from the front instead of the back.
+> - Forgetting the `i < 0` edge case.
+> - Forgetting `continue`, leading to `nums1[-1]`.
+> - Forgetting to decrement `k` after every placement.
+> - Using an extra array instead of utilizing the empty space in `nums1`.
+
+---
