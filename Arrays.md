@@ -370,3 +370,59 @@ class Solution {
 > - Using an extra array instead of utilizing the empty space in `nums1`.
 
 ---
+
+## 🟢 LC 66 • Plus One
+
+> **Pattern:** Carry Propagation (Simulation)
+
+### 🎯 Trigger
+- Digits are stored as an array.
+- Need to add `1` to the number.
+- Handle carry from right to left.
+- Number of digits may increase (e.g., `999 → 1000`).
+
+### 💡 Idea
+- Traverse the array **from right to left**.
+- If the current digit is **not 9**, increment it and return.
+- If the digit is `9`, make it `0` and continue left.
+- If every digit is `9`, create a new array with one extra digit and place `1` at the beginning.
+
+```java
+class Solution {
+    public int[] plusOne(int[] digits) {
+
+        for (int i = digits.length - 1; i >= 0; i--) {
+
+            if (digits[i] != 9) {
+                digits[i]++;
+                return digits;
+            }
+
+            digits[i] = 0;
+        }
+
+        int[] result = new int[digits.length + 1];
+        result[0] = 1;
+
+        return result;
+    }
+}
+```
+
+### 📊 Complexity
+
+| Time | Space |
+|------|-------|
+| `O(n)` | `O(1)`* |
+
+> *Extra space is only used when all digits are `9`, requiring a new output array.
+
+### ⚠️ Mistake
+> - Traversing from left to right instead of right to left.
+> - Forgetting that only `9` generates a carry.
+> - Forgetting to return immediately after incrementing a non-`9` digit.
+> - Not creating a new array when all digits are `9` (e.g., `999 → 1000`).
+
+---
+
+
