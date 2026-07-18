@@ -244,7 +244,7 @@ class Solution {
 
 ---
 
-### 🟢 Recognition
+### 🎯 Recognition
 
 - Rotate an array to the **right by `k` steps**.
 - `k` may be **greater than the array length**.
