@@ -426,3 +426,56 @@ class Solution {
 ---
 
 
+## 🟢 LC 169 • Majority Element
+
+> **Pattern:** Boyer-Moore Voting Algorithm (Candidate Elimination)
+
+### 🎯 Trigger
+- An element is guaranteed to appear **more than `n/2` times**.
+- Need **O(n)** time complexity.
+- Follow-up asks for **O(1)** extra space.
+
+### 💡 Idea
+- Maintain a **candidate** and a **count**.
+- If `count == 0`, choose the current element as the new candidate.
+- If the current element equals the candidate, increment `count`.
+- Otherwise, decrement `count`.
+- Different elements cancel each other out, so the majority element always survives.
+
+```java
+class Solution {
+    public int majorityElement(int[] nums) {
+
+        int candidate = 0;
+        int count = 0;
+
+        for (int num : nums) {
+
+            if (count == 0) {
+                candidate = num;
+            }
+
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+
+        return candidate;
+    }
+}
+```
+
+### 📊 Complexity
+
+| Time | Space |
+|------|-------|
+| `O(n)` | `O(1)` |
+
+### ⚠️ Mistake
+> - Updating the candidate before checking `count == 0`.
+> - Forgetting that this algorithm works **only because a majority element is guaranteed to exist**.
+> - Confusing the `count` with the actual frequency—it is only a **balance counter**, not the number of occurrences.
+
+```
