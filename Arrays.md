@@ -478,7 +478,6 @@ class Solution {
 > - Forgetting that this algorithm works **only because a majority element is guaranteed to exist**.
 > - Confusing the `count` with the actual frequency—it is only a **balance counter**, not the number of occurrences.
 
-```
 ---
 
 ## 🟢 LC 283 • Move Zeroes
