@@ -479,3 +479,52 @@ class Solution {
 > - Confusing the `count` with the actual frequency—it is only a **balance counter**, not the number of occurrences.
 
 ```
+
+## 🟢 LC 283 • Move Zeroes
+
+> **Pattern:** Fast & Slow Pointer (Array Compression)
+
+### 🎯 Trigger
+- Move specific elements to one side while maintaining the order of the remaining elements.
+- In-place modification required.
+- O(1) extra space.
+
+### 💡 Idea
+- Use `k` as the position where the next non-zero element should be placed.
+- Traverse the array and copy every non-zero element to `nums[k]`.
+- Increment `k` after placing a non-zero.
+- After all non-zero elements are placed, fill the remaining positions with `0`.
+
+```java
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int k = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        while (k < nums.length) {
+            nums[k] = 0;
+            k++;
+        }
+    }
+}
+```
+
+### 📊 Complexity
+
+| Time | Space |
+|------|-------|
+| `O(n)` | `O(1)` |
+
+### ⚠️ Mistake
+> - Setting `nums[i] = 0` while traversing can overwrite valid elements.
+> - Forgetting the second pass to fill the remaining positions with `0`.
+> - Starting the traversal from `i = 1` instead of `i = 0`.
+> - This pattern is similar to **LC 27 (Remove Element)**—compress valid elements to the front, then handle the remaining positions.
+
+```
